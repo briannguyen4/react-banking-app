@@ -1,7 +1,8 @@
-export const Btn = ({ fn, btnText }) => {
+//component > lib > Btn.jsx
+export const Btn = ({ fn, label, type }) => {
     return (
-        <button style={{ padding: "10px" }} onClick={fn}>
-            {btnText}
+        <button type={type} style={{ padding: "10px" }} onClick={fn}>
+            {label}
         </button>
     );
 };

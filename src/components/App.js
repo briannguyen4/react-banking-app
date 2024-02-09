@@ -1,13 +1,18 @@
 import "./App.css";
-import List from "./List";
-import { ListProvider } from "../contexts/ListContext";
+import CheckingAccount from "./CheckingAccount";
+import { CheckingProvider } from "../contexts/CheckingContext";
+import { SavingsProvider } from "../contexts/SavingsContext";
+import SavingsAccount from "./SavingAccount";
 
 function App() {
     return (
         <div className="App">
-            <ListProvider initialList={[1, 2, 3]}>
-                <List />
-            </ListProvider>
+            <CheckingProvider>
+                <CheckingAccount />
+            </CheckingProvider>
+            <SavingsProvider>
+                <SavingsAccount />
+            </SavingsProvider>
         </div>
     );
 }
