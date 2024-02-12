@@ -25,6 +25,7 @@ export const SavingsProvider = ({ children }) => {
                 savingsTransactions,
                 addSavingsTransaction,
                 savingsBalance,
+                setSavingsBalance
             }}
         >
             {children}

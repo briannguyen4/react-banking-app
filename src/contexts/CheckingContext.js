@@ -25,7 +25,8 @@ export const CheckingProvider = ({ children }) => {
             value={{
                 checkingTransactions,
                 addCheckingTransaction,
-                checkingBalance,
+                checkingBalance, 
+                setCheckingBalance
             }}
         >
             {children}

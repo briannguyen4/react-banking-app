@@ -1,53 +1,53 @@
 import { useState } from "react";
 import { Btn } from "./lib/Btn";
-import { addTran } from "./CheckingAccount";
-import { useCheckingContext } from "../contexts/CheckingContext";
-import { useSavingsContext } from "../contexts/SavingsContext";
+import Input from "./lib/Input";
+import RadioBtn from "./lib/RadioBtn";
+const TransactionForm = ({ addTransaction, balance, setBalance }) => {
+  const [amount, setAmount] = useState("");
+  const [transactionType, setTransactionType] = useState("deposit");
 
-const TransactionForm = () => {
-    const { addCheckingTransaction } = useCheckingContext();
-    const { addSavingsTransaction } = useSavingsContext();
-    const [amount, setAmount] = useState(0);
-    const [transactionType, setTransactionType] = useState("deposit");
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const transaction = {
-            type: transactionType,
-            amount: parseFloat(amount),
-        };
-        console.log(transaction);
-        addCheckingTransaction(transaction);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const transactionAmount = parseFloat(amount);
+    const updatedBalance =
+      transactionType === "deposit"
+        ? balance + transactionAmount
+        : balance - transactionAmount;
+    const transaction = {
+      type: transactionType,
+      amount: transactionAmount,
     };
+    addTransaction(transaction);
+    setBalance(updatedBalance);
+    setAmount("");
+  };
 
-    return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Amount:
-                <input
-                    type="number"
-                    onInput={(e) => setAmount(e.target.value)}
-                />
-            </label>
-            <fieldset>
-                <legend>
-                    Transaction type
-                    <input
-                        type="radio"
-                        checked={transactionType === "deposit"}
-                        onChange={() => setTransactionType("deposit")}
-                    />{" "}
-                    Deposit
-                    <input
-                        type="radio"
-                        checked={transactionType === "withdrawal"}
-                        onChange={() => setTransactionType("withdrawal")}
-                    />{" "}
-                    Withdrawal
-                </legend>
-            </fieldset>
-            <Btn type="submit" label="Submit" />
-        </form>
-    );
+  return (
+    <form onSubmit={handleSubmit}>
+      <Input
+        id="amount"
+        type="number"
+        label="Amount"
+        value={amount}
+        onChange={(e) => setAmount(e.target.value)}
+      />
+      <fieldset>
+        <legend>Transaction type</legend>
+        <RadioBtn
+          id="deposit"
+          label="Deposit"
+          checked={transactionType === "deposit"}
+          onChange={() => setTransactionType("deposit")}
+        />
+        <RadioBtn
+          id="withdraw"
+          label="Withdraw"
+          checked={transactionType === "withdrawal"}
+          onChange={() => setTransactionType("withdrawal")}
+        />
+      </fieldset>
+      <Btn type="submit" label="Submit" />
+    </form>
+  );
 };
 export default TransactionForm;
