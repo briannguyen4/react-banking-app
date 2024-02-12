@@ -1,18 +1,15 @@
 import "./App.css";
 import CheckingAccount from "./CheckingAccount";
-import { CheckingProvider } from "../contexts/CheckingContext";
-import { SavingsProvider } from "../contexts/SavingsContext";
 import SavingsAccount from "./SavingAccount";
+import { BankingProvider } from "../contexts/BankingContext";
 
 function App() {
     return (
         <div className="App">
-            <CheckingProvider>
+            <BankingProvider>
                 <CheckingAccount />
-            </CheckingProvider>
-            <SavingsProvider>
                 <SavingsAccount />
-            </SavingsProvider>
+            </BankingProvider>
         </div>
     );
 }

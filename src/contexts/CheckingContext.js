@@ -1,5 +1,4 @@
 import { createContext, useContext, useState } from "react";
-import CheckingAccount from "../components/CheckingAccount";
 
 const CheckingContext = createContext();
 
@@ -25,8 +24,8 @@ export const CheckingProvider = ({ children }) => {
             value={{
                 checkingTransactions,
                 addCheckingTransaction,
-                checkingBalance, 
-                setCheckingBalance
+                checkingBalance,
+                setCheckingBalance,
             }}
         >
             {children}
