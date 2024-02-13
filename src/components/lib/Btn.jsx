@@ -4,9 +4,10 @@ export const Btn = ({ fn, label, type }) => {
     <button
       type={type}
       style={{
-        backgroundColor: "lightgreen",
+        backgroundColor: "#c1debd",
         fontWeight: "700",
         padding: "10px",
+        marginTop: "8px",
       }}
       onClick={fn}
     >
