@@ -1,6 +1,12 @@
 import React from 'react';
 
-const TransactionsList = ({ transactions }) => {
+// Define the type for each transaction object
+interface Transaction {
+    type: string;
+    amount: number;
+}
+
+const TransactionsList = ({ transactions }: { transactions: Transaction[] }) => {
     return (
         <ul>
             {transactions.map((transaction, index) => (

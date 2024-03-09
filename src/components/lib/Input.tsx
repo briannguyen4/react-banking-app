@@ -1,9 +1,15 @@
 import React from "react";
 
-const Input = ({ id, type, label, onChange, value }) => {
+const Input = ({ id, type, label, onChange, value }: { 
+  id: string; 
+  label: string; 
+  type: string; 
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; // Specify the type for e
+  value: number;
+}) => {
   return (
     <>
-      <label htmlFor="amount" style={{ color: "darkgreen" }}>
+      <label htmlFor={id} style={{ color: "darkgreen" }}>
         {label}:{" "}
       </label>
       <input

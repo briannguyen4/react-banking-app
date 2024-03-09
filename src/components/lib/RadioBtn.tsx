@@ -1,6 +1,11 @@
 import React from "react";
 
-const RadioBtn = ({ id, checked, onChange, label }) => {
+const RadioBtn = ({ id, checked, onChange, label }: { 
+  id: string;
+  label: string; 
+  checked: boolean; 
+  onChange: () => void;
+}) => {
   return (
     <>
       <input

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Btn } from "./lib/Btn";
 import Input from "./lib/Input";
 import RadioBtn from "./lib/RadioBtn";
+
 const TransactionForm = ({
   account,
   addTransaction,
@@ -11,6 +12,14 @@ const TransactionForm = ({
   otherBalance,
   setOtherBalance,
   addOtherTransaction,
+}: { 
+  account: string;
+  addTransaction: (transaction: {type: string; amount: number }) => void; 
+  balance: number; 
+  setBalance: React.Dispatch<React.SetStateAction<number>>;
+  otherBalance: number
+  setOtherBalance: React.Dispatch<React.SetStateAction<number>>;
+  addOtherTransaction: (transaction: {type: string; amount: number }) => void;
 }) => {
   const [amount, setAmount] = useState("");
   const [transactionType, setTransactionType] = useState("deposit");

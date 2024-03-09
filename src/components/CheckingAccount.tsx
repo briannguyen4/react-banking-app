@@ -2,6 +2,7 @@ import React from "react";
 import { useBankingContext } from "../contexts/BankingContext";
 import TransactionForm from "./TransactionForm";
 import TransactionsList from "./TransactionsList";
+import {BankingContextType} from "../types";
 
 function CheckingAccount() {
   const {
@@ -12,7 +13,7 @@ function CheckingAccount() {
     setSavingsBalance,
     addSavingsTransaction,
     savingsBalance,
-  } = useBankingContext();
+  } = useBankingContext() as BankingContextType;
 
   return (
     <div>
