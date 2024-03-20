@@ -1,12 +1,14 @@
-import React from 'react';
-
 // Define the type for each transaction object
 interface Transaction {
     type: string;
     amount: number;
 }
 
-const TransactionsList = ({ transactions }: { transactions: Transaction[] }) => {
+const TransactionsList = ({
+    transactions,
+}: {
+    transactions: Transaction[];
+}) => {
     return (
         <ul>
             {transactions.map((transaction, index) => (
