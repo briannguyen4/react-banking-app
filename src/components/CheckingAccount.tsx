@@ -2,35 +2,39 @@ import { useBankingContext } from "../contexts/BankingContext";
 import TransactionForm from "./TransactionForm";
 import TransactionsList from "./TransactionsList";
 import { BankingContextType } from "../types";
+import { useNavigate } from "react-router-dom";
 
-function CheckingAccount() {
-    const {
-        checkingTransactions,
-        addCheckingTransaction,
-        checkingBalance,
-        setCheckingBalance,
-        setSavingsBalance,
-        addSavingsTransaction,
-        savingsBalance,
-    } = useBankingContext() as BankingContextType;
+const CheckingAccount = () => {
+  const {
+    checkingTransactions,
+    addCheckingTransaction,
+    checkingBalance,
+    setCheckingBalance,
+    setSavingsBalance,
+    addSavingsTransaction,
+    savingsBalance,
+  } = useBankingContext() as BankingContextType;
 
-    return (
-        <div>
-            <h2>Checking Account Transactions</h2>
-            <h3>Total Balance: {checkingBalance}</h3>
-            <TransactionsList transactions={checkingTransactions} />
-            <TransactionForm
-                account="checking"
-                addTransaction={addCheckingTransaction}
-                balance={checkingBalance}
-                setBalance={setCheckingBalance}
-                otherBalance={savingsBalance}
-                setOtherBalance={setSavingsBalance}
-                addOtherTransaction={addSavingsTransaction}
-            />
-            {/* <input value type="text" onChange />
-            <Btn fn={addCheckingTransaction} btnText={"Add transaction"} /> */}
-        </div>
-    );
-}
+  const navigate = useNavigate();
+
+  return (
+    <div>
+      <h1>Checking Account Information</h1>
+
+      <h2>Total Balance: {checkingBalance}</h2>
+      <h3>Transactions:</h3>
+      <TransactionsList transactions={checkingTransactions} />
+      <TransactionForm
+        account="checking"
+        addTransaction={addCheckingTransaction}
+        balance={checkingBalance}
+        setBalance={setCheckingBalance}
+        otherBalance={savingsBalance}
+        setOtherBalance={setSavingsBalance}
+        addOtherTransaction={addSavingsTransaction}
+      />
+      <button onClick={() => navigate("/")}>Go back to accounts summary</button>
+    </div>
+  );
+};
 export default CheckingAccount;
